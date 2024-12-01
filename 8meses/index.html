@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Quiero Mucho</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, pink, purple);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .login-container {
+            margin: 15vh auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 350px;
+            position: relative;
+            box-shadow: 0 0 30px hotpink, 0 0 60px deeppink, 0 0 90px purple;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid hotpink;
+            border-radius: 10px;
+            outline: none;
+            font-size: 16px;
+        }
+        input:focus {
+            box-shadow: 0 0 15px hotpink;
+        }
+        button {
+            background: hotpink;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            box-shadow: 0 0 15px white, 0 0 25px hotpink;
+        }
+        button:hover {
+            background: deeppink;
+        }
+        button:active {
+            transform: scale(0.9);
+            background: lightpink;
+        }
+        .hidden {
+            display: none;
+        }
+        .content {
+            margin: 20px;
+        }
+        .images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .images img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .images img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px white;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            color: black;
+            padding: 20px;
+            border: 3px solid hotpink;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 15px pink;
+        }
+        .popup button {
+            margin-top: 10px;
+            background: hotpink;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="login" class="login-container">
+        <h1>Inicia Sesión</h1>
+        <form onsubmit="return checkLogin()">
+            <input type="text" id="username" placeholder="Nombre" required><br>
+            <input type="password" id="password" placeholder="Contraseña" required><br>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+    <div id="content" class="hidden content">
+        <h1>Te quiero mucho ❤️</h1>
+        <div class="images">
+            <img src="IMG_20241030_201358_052.jpg" alt="Imagen 1" onclick="showPopup()">
+            <img src="IMG_20241030_201407_055.jpg" alt="Imagen 2" onclick="showPopup()">
+            <img src="IMG_20241201_201032_294.jpg" alt="Imagen 3" onclick="showPopup()">
+        </div>
+    </div>
+    <div id="popup" class="popup">
+        <p>Te quiero mucho, soy muy feliz contigo ❤️</p>
+        <button onclick="closePopup()">Cerrar</button>
+    </div>
+    <script>
+        function checkLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === "Matías" && password === "8meses") {
+                document.getElementById('login').classList.add('hidden');
+                document.getElementById('content').classList.remove('hidden');
+                return false;
+            } else {
+                alert("Nombre o contraseña incorrectos.");
+                return false;
+            }
+        }
+
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
